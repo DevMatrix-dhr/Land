@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-parchment-50 text-ink-950 font-body;
+}
+
+::selection {
+  background-color: #E9DFC6;
+}
+
+.font-display {
+  font-feature-settings: "ss01";
+}
+
+/* ────── Scrollbar ────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D6CBB0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2B4270; }
+
+/* ────── Ledger-style hairline table rows ────── */
+.ledger-row {
+  border-bottom: 1px solid #E9DFC6;
+  transition: background-color 0.15s;
+}
+.ledger-row:hover {
+  background-color: #F4EEDF;
+}
+
+/* ────── Confidence heatmap utility classes ────── */
+.conf-high {
+  border-color: #4C7A4A !important;
+  background-color: #F1F6F0;
+}
+.conf-mid {
+  border-color: #C4872A !important;
+  background-color: #FBF3E6;
+}
+.conf-low {
+  border-color: #B5482E !important;
+  background-color: #FBEEEC;
+}
+
+/* ────── Pipeline stepper ────── */
+.pipeline-step {
+  @apply flex items-center gap-2 text-xs py-1.5 px-2 rounded transition-all duration-300;
+}
+.pipeline-step.active {
+  @apply bg-ink-950 text-parchment-50 font-medium;
+}
+.pipeline-step.done {
+  @apply bg-moss-500 text-white font-medium;
+}
+.pipeline-step.pending {
+  @apply bg-parchment-100 text-ink-600;
+}
+
+/* ────── Status pills ────── */
+.status-pill {
+  @apply inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-full;
+}
+.status-auto_approved, .status-approved {
+  @apply bg-moss-500/15 text-moss-600;
+}
+.status-needs_review {
+  @apply bg-amber-500/15 text-amber-600;
+}
+.status-flagged {
+  @apply bg-seal-500/15 text-seal-600;
+}
+.status-rejected {
+  @apply bg-seal-500/25 text-seal-600;
+}
+.status-pending {
+  @apply bg-ink-500/15 text-ink-600;
+}
+
+/* ────── Premium cards ────── */
+.card {
+  @apply bg-white border border-parchment-200 rounded-lg;
+  box-shadow: 0 1px 3px rgba(15, 26, 46, 0.04), 0 1px 2px rgba(15, 26, 46, 0.02);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(15, 26, 46, 0.08), 0 2px 4px rgba(15, 26, 46, 0.04);
+}
+
+.card-metric {
+  @apply card p-4;
+}
+
+/* ────── Sidebar nav ────── */
+.nav-link {
+  @apply flex items-center gap-3 px-4 py-2.5 text-sm rounded-md transition-all duration-150;
+}
+.nav-link:hover {
+  @apply bg-ink-800;
+}
+.nav-link.active {
+  @apply bg-ink-700 font-medium;
+}
+
+/* ────── Confidence progress bar ────── */
+.conf-bar {
+  @apply h-1.5 rounded-full;
+  transition: width 0.5s ease-out;
+}
+
+/* ────── Document viewer field highlight ────── */
+.field-highlight {
+  position: absolute;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  transition: border-color 0.2s, background-color 0.2s;
+  pointer-events: none;
+}
+.field-highlight.active {
+  border-color: #FF9933;
+  background-color: rgba(255, 153, 51, 0.12);
+}
+
+/* ────── Hash chain visualization ────── */
+.hash-node {
+  @apply font-mono text-[10px] px-2 py-1 rounded bg-ink-800 text-parchment-100 truncate max-w-[100px];
+}
+.hash-arrow {
+  @apply text-ink-600 mx-1;
+}
+
+/* ────── Audit timeline ────── */
+.audit-entry {
+  @apply relative pl-6 pb-6 border-l-2 border-parchment-200;
+}
+.audit-entry::before {
+  content: '';
+  @apply absolute left-[-5px] top-1 w-2 h-2 rounded-full bg-ink-700;
+}
+.audit-entry.action-approved::before { @apply bg-moss-500; }
+.audit-entry.action-auto_approved::before { @apply bg-moss-500; }
+.audit-entry.action-flagged::before { @apply bg-amber-500; }
+.audit-entry.action-rejected::before { @apply bg-seal-500; }
+.audit-entry.action-document_uploaded::before { @apply bg-ink-500; }
+.audit-entry.action-field_corrected::before { @apply bg-amber-500; }
+.audit-entry.action-synced_to_DILRMP::before { @apply bg-moss-400; }
+
+/* ────── Language badge ────── */
+.lang-badge {
+  @apply inline-flex items-center text-[10px] font-medium px-1.5 py-0.5 rounded;
+}
+.lang-Hindi { @apply bg-amber-500/15 text-amber-600; }
+.lang-English { @apply bg-ink-500/15 text-ink-600; }
+.lang-Marathi { @apply bg-purple-500/15 text-purple-600; }
+.lang-Telugu { @apply bg-emerald-500/15 text-emerald-600; }
+.lang-Kannada { @apply bg-pink-500/15 text-pink-600; }
+.lang-Bengali { @apply bg-rose-500/15 text-rose-600; }
+
+/* ────── Button styles ────── */
+.btn-primary {
+  @apply px-4 py-2 rounded bg-ink-950 text-parchment-50 text-sm font-medium transition-all duration-150;
+}
+.btn-primary:hover { @apply bg-ink-800; }
+
+.btn-success {
+  @apply px-4 py-2 rounded bg-moss-600 text-white text-sm font-medium transition-all duration-150;
+}
+.btn-success:hover { @apply bg-moss-500; }
+
+.btn-warning {
+  @apply px-4 py-2 rounded bg-amber-600 text-white text-sm font-medium transition-all duration-150;
+}
+.btn-warning:hover { @apply bg-amber-500; }
+
+.btn-danger {
+  @apply px-4 py-2 rounded bg-seal-600 text-white text-sm font-medium transition-all duration-150;
+}
+.btn-danger:hover { @apply bg-seal-500; }
+
+.btn-outline {
+  @apply px-4 py-2 rounded border border-ink-950 text-ink-950 text-sm font-medium transition-all duration-150;
+}
+.btn-outline:hover { @apply bg-ink-950 text-parchment-50; }
+
+/* ────── Premium Glassmorphism ────── */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-sm rounded-xl;
+}
+.glass-panel-dark {
+  @apply bg-ink-950/80 backdrop-blur-md border border-ink-800 shadow-lg rounded-xl text-parchment-50;
+}
+
+/* ────── OCR Scanning Animation ────── */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #FF9933;
+  box-shadow: 0 0 8px 2px rgba(255, 153, 51, 0.4);
+  animation: scan 2s linear infinite;
+  z-index: 10;
+}
+@keyframes scan {
+  0% { top: 0; }
+  50% { top: 100%; }
+  100% { top: 0; }
+}
+
+/* ────── Map Visualization ────── */
+.map-container {
+  @apply relative w-full h-full rounded-lg overflow-hidden bg-parchment-100 border border-parchment-200;
+}
+.map-layer {
+  @apply absolute inset-0 opacity-70 mix-blend-multiply;
+}
